@@ -111,7 +111,7 @@ class ProductProvider with ChangeNotifier {
       quantity: 0,
       category: 'وجبات',
     ),
-    // إضافات جديدة تلائم التصنيفات
+   
     ProductModel(
       id: '13',
       name: 'كورن دوج',
@@ -165,7 +165,7 @@ class ProductProvider with ChangeNotifier {
     final index = _products.indexWhere((p) => p.id == id);
     if (index != -1) {
       _products[index] = _products[index].copyWith(quantity: newQuantity);
-      notifyListeners(); // مهم جدًا لتحديث الشاشة
+      notifyListeners(); 
     }
   }
 
@@ -173,7 +173,7 @@ class ProductProvider with ChangeNotifier {
     return _products.fold(0.0, (sum, p) => sum + (p.price * p.quantity));
   }
 
-  // فلترة المنتجات حسب التصنيف المحدد
+  
   List<ProductModel> filterByCategory(String? category) {
     if (category == null || category.isEmpty) {
       return _products;
