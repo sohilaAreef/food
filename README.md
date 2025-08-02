@@ -44,8 +44,12 @@ Clean folder structure:
 ├── screens/
 └── assets/
 
-Screenshots
-Original Design	My App
+## Screenshot
+
+### My App Implementation
+
+<img src="assets/screenshots/my_app.png" width="300" />
+
 
 Project Architecture
 State Management: Provider (Flutter)
@@ -61,4 +65,5 @@ providers/: Business logic (ProductProvider)
 screens/: UI
 
 assets/: Images
+
 
