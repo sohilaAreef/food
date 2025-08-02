@@ -31,10 +31,7 @@ class _ProductScreenState extends State<ProductScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // تصفية التصنيفات
             _buildCategorySelector(),
-
-            // قائمة المنتجات مع Expanded لمنع الـ overflow
             Expanded(
               child: _buildProductGrid(filteredProducts, productProvider),
             ),
@@ -55,7 +52,7 @@ class _ProductScreenState extends State<ProductScreen> {
 
   Widget _buildCategorySelector() {
     return Container(
-      height: 60, // ارتفاع ثابت لشريط التصنيفات
+      height: 60,
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -68,9 +65,9 @@ class _ProductScreenState extends State<ProductScreen> {
                 selected:
                     selectedCategory == category ||
                     (selectedCategory == null && category == 'الكل'),
-                onSelected: (_) => setState(
-                  () => selectedCategory = category == 'الكل' ? null : category,
-                ),
+                onSelected: (_) => setState(() {
+                  selectedCategory = category == 'الكل' ? null : category;
+                }),
                 selectedColor: Colors.blue.shade100,
                 backgroundColor: Colors.grey.shade200,
                 labelStyle: const TextStyle(fontWeight: FontWeight.w600),
@@ -92,7 +89,7 @@ class _ProductScreenState extends State<ProductScreen> {
         crossAxisCount: 2,
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,
-        childAspectRatio: 0.72, // تعديل النسبة لحل مشكلة الـ overflow
+        childAspectRatio: 0.72,
       ),
       itemCount: products.length,
       itemBuilder: (context, index) => _ProductCard(
@@ -141,7 +138,7 @@ class _ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 2,
+      color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(12),
@@ -173,7 +170,7 @@ class _ProductCard extends StatelessWidget {
                           color: Color(0xFF1E88E5),
                         ),
                       ),
-                      const Spacer(), // ✅ بعد IntrinsicHeight تشتغل
+                      const Spacer(),
                       _buildQuantityControls(),
                     ],
                   ),
@@ -188,11 +185,10 @@ class _ProductCard extends StatelessWidget {
 
   Widget _buildProductImage() {
     return SizedBox(
-      height: 100, // ارتفاع ثابت للصورة
+      height: 100,
       child: Stack(
         alignment: Alignment.topRight,
         children: [
-          // صورة المنتج الرئيسية
           Center(
             child: Container(
               width: 100,
@@ -216,8 +212,6 @@ class _ProductCard extends StatelessWidget {
               ),
             ),
           ),
-
-          // شعار Burger King
           Positioned(
             top: 0,
             right: 0,
